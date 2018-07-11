@@ -11,25 +11,33 @@ var searchButton = document.querySelector('.button');
 seriesContainer.appendChild(seriesList);
 
 function takeUserSearch() {
+  seriesList.innerHTML = '';
   var inputValue = userInput.value;
   fetch(url + inputValue)
     .then(function(response){
       return response.json();
     })
     .then(function(json){
-      console.log('json', json);
       for (var i = 0; i < json.length; i++) {
-        var arraySeriesName = json[i].show.name;
-        console.log('series name', arraySeriesName);
-        var arraySeriesImg = json[i].show.image.medium;
-        console.log('imagen', arraySeriesImg);
+        console.log('show', json[i].show);
+        var seriesName = json[i].show.name;
+        var seriesImg = json[i].show.image;
         var seriesItem = document.createElement('li');
         var seriesImage = document.createElement('img');
+
+        if (json[i].show.image === null) {
+          console.log('if', seriesName);
+          seriesImage.src = 'https://via.placeholder.com/210x295/cccccc/666666/?text=TV';
+        } else {
+          console.log('else', seriesName);
+          seriesImage.src = seriesImg.medium;
+        }
         seriesList.appendChild(seriesItem);
-        seriesItem.innerHTML = json[i].show.name;
-        seriesImage.setAttribute('src', json[i].show.image.medium);
+        seriesList.classList.add('ul__container');
+        seriesItem.innerHTML = seriesName;
         seriesItem.appendChild(seriesImage);
-        console.log(seriesImage);
+        seriesItem.classList.add('li__container');
+        seriesImage.classList.add('image');
       }
     });
 }

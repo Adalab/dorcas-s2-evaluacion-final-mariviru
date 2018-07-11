@@ -1,1 +1,25 @@
+.title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.ul__container {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.li__container {
+  background-color: pink;
+  color: fuchsia;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 10px;
+}
+
+.image {
+  max-width: 210px;
+  margin-bottom: 10px;
+}
