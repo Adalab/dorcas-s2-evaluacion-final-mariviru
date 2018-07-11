@@ -9,17 +9,26 @@
 }
 
 .li__container {
-  background-color: pink;
-  color: fuchsia;
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column-reverse;
   padding-bottom: 10px;
+  cursor: pointer;
 }
 
 .image {
   max-width: 210px;
   margin-bottom: 10px;
+}
+
+.normal__serie {
+  background-color: pink;
+  color: fuchsia;
+}
+
+.favorite__serie {
+  background-color: lightgreen;
+  border: 2px solid green;
 }
