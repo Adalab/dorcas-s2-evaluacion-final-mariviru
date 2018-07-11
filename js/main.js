@@ -54,15 +54,3 @@ function favoritesSeries() {
 }
 
 searchButton.addEventListener('click', takeUserSearch);
-
-// function showName(event) {
-//   var id = event.currentTarget.getAttribute('data-id');
-//   alert(event.currentTarget.innerHTML + ' ' + movies[id].director + ' ' + movies[id].year);
-// };
-
-// function seeList() {
-//   var list = document.querySelectorAll('.js__list li');
-//   for (var i = 0; i < list.length; i++) {
-//     list[i].addEventListener('click', showName);
-//   }
-// };
