@@ -19,27 +19,50 @@ function takeUserSearch() {
     })
     .then(function(json){
       for (var i = 0; i < json.length; i++) {
-        console.log('show', json[i].show);
         var seriesName = json[i].show.name;
         var seriesImg = json[i].show.image;
         var seriesItem = document.createElement('li');
         var seriesImage = document.createElement('img');
 
         if (json[i].show.image === null) {
-          console.log('if', seriesName);
           seriesImage.src = 'https://via.placeholder.com/210x295/cccccc/666666/?text=TV';
         } else {
-          console.log('else', seriesName);
           seriesImage.src = seriesImg.medium;
         }
         seriesList.appendChild(seriesItem);
         seriesList.classList.add('ul__container');
         seriesItem.innerHTML = seriesName;
         seriesItem.appendChild(seriesImage);
-        seriesItem.classList.add('li__container');
+        seriesItem.classList.add('li__container', 'normal__serie');
         seriesImage.classList.add('image');
       }
+      favoritesSeries();
     });
 }
 
+function changeClass(event) {
+  document.currentTarget;
+  event.currentTarget.classList.remove('normal_serie');
+  event.currentTarget.classList.add('favorite__serie');
+}
+
+function favoritesSeries() {
+  var favorites = document.querySelectorAll('li');
+  for (var i = 0; i < favorites.length; i++) {
+    favorites[i].addEventListener('click', changeClass);
+  }
+}
+
 searchButton.addEventListener('click', takeUserSearch);
+
+// function showName(event) {
+//   var id = event.currentTarget.getAttribute('data-id');
+//   alert(event.currentTarget.innerHTML + ' ' + movies[id].director + ' ' + movies[id].year);
+// };
+
+// function seeList() {
+//   var list = document.querySelectorAll('.js__list li');
+//   for (var i = 0; i < list.length; i++) {
+//     list[i].addEventListener('click', showName);
+//   }
+// };
