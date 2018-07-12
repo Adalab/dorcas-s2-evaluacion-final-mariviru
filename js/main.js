@@ -8,10 +8,13 @@ var url = 'http://api.tvmaze.com/search/shows?q=';
 var userInput = document.querySelector('.input');
 var searchButton = document.querySelector('.button');
 
+var arrayFavorites = [];
+
 seriesContainer.appendChild(seriesList);
 
 function takeUserSearch() {
   seriesList.innerHTML = '';
+  var savedSeries = JSON.parse(localStorage.getItem('favoritesSeries'));
   var inputValue = userInput.value;
   fetch(url + inputValue)
     .then(function (response) {
@@ -34,7 +37,7 @@ function takeUserSearch() {
         seriesItem.innerHTML = seriesName;
         seriesItem.appendChild(seriesImage);
         seriesItem.classList.add('li__container', 'normal__serie');
-        seriesItem.setAttribute('id', i);
+        seriesItem.setAttribute('id', json[i].show.id);
         seriesImage.classList.add('image');
 
         favoritesSeries();
@@ -56,10 +59,13 @@ function changeClass(event) {
       var objSerie = {
         id: favoritesId,
         name: favoritesName,
-      }
-      localStorage.setItem('favoritesSeries', objSerie);
+      };
     }
   }
+  arrayFavorites.push(objSerie);
+  //if (favoritesList.classList.contains('favorite__serie')) {
+    localStorage.setItem('favoritesSeries', JSON.stringify(arrayFavorites));
+  //}
 }
 
 function favoritesSeries() {
