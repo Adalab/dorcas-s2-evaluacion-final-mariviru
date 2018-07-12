@@ -42,24 +42,30 @@ function takeUserSearch() {
     });
 }
 
-
 function changeClass(event) {
   event.currentTarget.classList.toggle('favorite__serie');
+  var favoritesList = document.querySelectorAll('li');
+  console.log('favoritesList', favoritesList);
+  for (var s = 0; s < favoritesList.length; s++) {
+    var favoritesId = favoritesList[s].id;
+    console.log('favoritesId', favoritesId);
+    var favoritesName = favoritesList[s].textContent;
+    console.log('favoritesId', favoritesName);
+    if(favoritesList[s].classList[2] === 'favorite__serie') {
+      console.log('favorites class', favoritesList[s].classList[2]);
+      var objSerie = {
+        id: favoritesId,
+        name: favoritesName,
+      }
+      localStorage.setItem('favoritesSeries', objSerie);
+    }
+  }
 }
 
 function favoritesSeries() {
   var favorites = document.querySelectorAll('li');
   for (var i = 0; i < favorites.length; i++) {
     favorites[i].addEventListener('click', changeClass);
-  }
-
-  var favoritesList = document.querySelectorAll('favorite__serie');
-  console.log('que es', favoritesList);
-  for (var s = 0; s < favoritesList.length; s++) {
-    if (favoritesList[s].classList.contains('favorite__serie')) {
-      localStorage.setItem('favoritesList', JSON.stringify(favoritesList[s]));
-      console.log(favoritesList[s]);
-    }
   }
 }
 
