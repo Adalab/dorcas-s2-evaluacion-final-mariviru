@@ -14,10 +14,10 @@ function takeUserSearch() {
   seriesList.innerHTML = '';
   var inputValue = userInput.value;
   fetch(url + inputValue)
-    .then(function(response){
+    .then(function (response) {
       return response.json();
     })
-    .then(function(json){
+    .then(function (json) {
       for (var i = 0; i < json.length; i++) {
         var seriesName = json[i].show.name;
         var seriesImg = json[i].show.image;
@@ -34,11 +34,14 @@ function takeUserSearch() {
         seriesItem.innerHTML = seriesName;
         seriesItem.appendChild(seriesImage);
         seriesItem.classList.add('li__container', 'normal__serie');
+        seriesItem.setAttribute('id', i);
         seriesImage.classList.add('image');
+
+        favoritesSeries();
       }
-      favoritesSeries();
     });
 }
+
 
 function changeClass(event) {
   event.currentTarget.classList.toggle('favorite__serie');
@@ -48,6 +51,15 @@ function favoritesSeries() {
   var favorites = document.querySelectorAll('li');
   for (var i = 0; i < favorites.length; i++) {
     favorites[i].addEventListener('click', changeClass);
+  }
+
+  var favoritesList = document.querySelectorAll('favorite__serie');
+  console.log('que es', favoritesList);
+  for (var s = 0; s < favoritesList.length; s++) {
+    if (favoritesList[s].classList.contains('favorite__serie')) {
+      localStorage.setItem('favoritesList', JSON.stringify(favoritesList[s]));
+      console.log(favoritesList[s]);
+    }
   }
 }
 
