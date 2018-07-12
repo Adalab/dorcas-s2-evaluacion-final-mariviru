@@ -41,9 +41,7 @@ function takeUserSearch() {
 }
 
 function changeClass(event) {
-  document.currentTarget;
-  event.currentTarget.classList.remove('normal_serie');
-  event.currentTarget.classList.add('favorite__serie');
+  event.currentTarget.classList.toggle('favorite__serie');
 }
 
 function favoritesSeries() {
@@ -55,14 +53,3 @@ function favoritesSeries() {
 
 searchButton.addEventListener('click', takeUserSearch);
 
-// function showName(event) {
-//   var id = event.currentTarget.getAttribute('data-id');
-//   alert(event.currentTarget.innerHTML + ' ' + movies[id].director + ' ' + movies[id].year);
-// };
-
-// function seeList() {
-//   var list = document.querySelectorAll('.js__list li');
-//   for (var i = 0; i < list.length; i++) {
-//     list[i].addEventListener('click', showName);
-//   }
-// };
