@@ -5,7 +5,9 @@
 }
 
 body {
+  width: 100vw;
   color: black;
   font-family: 'Cinzel', serif;
   font-size: 18px;
+  overflow-x: hidden;
 }
