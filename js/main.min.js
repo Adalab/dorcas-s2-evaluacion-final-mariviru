@@ -47,25 +47,25 @@ function takeUserSearch() {
 
 function changeClass(event) {
   event.currentTarget.classList.toggle('favorite__serie');
-  var favoritesList = document.querySelectorAll('li');
-  console.log('favoritesList', favoritesList);
-  for (var s = 0; s < favoritesList.length; s++) {
-    var favoritesId = favoritesList[s].id;
-    console.log('favoritesId', favoritesId);
-    var favoritesName = favoritesList[s].textContent;
-    console.log('favoritesId', favoritesName);
-    if(favoritesList[s].classList[2] === 'favorite__serie') {
-      console.log('favorites class', favoritesList[s].classList[2]);
-      var objSerie = {
-        id: favoritesId,
-        name: favoritesName,
-      };
-    }
-  }
-  arrayFavorites.push(objSerie);
-  //if (favoritesList.classList.contains('favorite__serie')) {
+  var favoriteSerie = event.currentTarget;
+  console.log('favorite serie', favoriteSerie);
+  var favoriteId = favoriteSerie.id;
+  console.log('favoritesId', favoriteId);
+  var favoriteName = favoriteSerie.textContent;
+  console.log('favoritesId', favoriteName);
+  if (favoriteSerie.classList[2] === 'favorite__serie') {
+    console.log('favorites class', favoriteSerie.classList[2]);
+    // var objSerie = {
+    //   id: favoriteId,
+    //   name: favoriteName,
+    // };
+    arrayFavorites.push(favoriteId);
     localStorage.setItem('favoritesSeries', JSON.stringify(arrayFavorites));
-  //}
+  } else {
+    var indexSeries = arrayFavorites.indexOf(favoriteId);
+    arrayFavorites.splice(indexSeries,1);
+    localStorage.setItem('favoritesSeries', JSON.stringify(arrayFavorites));
+  } console.log('array', arrayFavorites);
 }
 
 function favoritesSeries() {
