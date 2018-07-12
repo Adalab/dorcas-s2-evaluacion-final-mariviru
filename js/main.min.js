@@ -3,7 +3,7 @@
 var seriesContainer = document.querySelector('.series__container');
 var seriesList = document.createElement('ul');
 
-var url = 'http://api.tvmaze.com/search/shows?q=';
+var url = 'https://api.tvmaze.com/search/shows?q=';
 
 var userInput = document.querySelector('.input');
 var searchButton = document.querySelector('.button');

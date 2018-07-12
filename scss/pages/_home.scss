@@ -1,8 +1,18 @@
 .ul__container {
-  margin: 30px 50px 50px 50px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 25px;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+@media all and (min-width: 768px) {
+  .ul__container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .li__container {
@@ -15,7 +25,7 @@
 }
 
 .image {
-  max-width: 200px;
+  max-width: 150px;
   margin-bottom: 15px;
 }
 
