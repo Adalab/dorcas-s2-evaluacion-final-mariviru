@@ -52,4 +52,3 @@ function favoritesSeries() {
 }
 
 searchButton.addEventListener('click', takeUserSearch);
-
