@@ -41,9 +41,7 @@ function takeUserSearch() {
 }
 
 function changeClass(event) {
-  document.currentTarget;
-  event.currentTarget.classList.remove('normal_serie');
-  event.currentTarget.classList.add('favorite__serie');
+  event.currentTarget.classList.toggle('favorite__serie');
 }
 
 function favoritesSeries() {
