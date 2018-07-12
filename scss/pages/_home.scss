@@ -1,34 +1,33 @@
-.title {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 .ul__container {
-  margin-top: 20px;
-  margin-left: 20px;
+  margin: 30px 50px 50px 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
+
 }
 
 .li__container {
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column-reverse;
-  padding-bottom: 10px;
+  align-items: center;
   cursor: pointer;
 }
 
 .image {
-  max-width: 210px;
-  margin-bottom: 10px;
+  max-width: 200px;
+  margin-bottom: 15px;
 }
 
 .normal__serie {
   background-color: pink;
-  color: fuchsia;
+  border: 2px solid pink;
+  color: #c90892;
 }
 
 .favorite__serie {
   background-color: lightgreen;
   border: 2px solid green;
+  color: green;
 }
