@@ -3,7 +3,7 @@
 var seriesContainer = document.querySelector('.series__container');
 var seriesList = document.createElement('ul');
 
-var url = 'https://api.tvmaze.com/search/shows?q=';
+var url = ' https://api.tvmaze.com/search/people?q=';
 
 var userInput = document.querySelector('.input');
 var searchButton = document.querySelector('.button');
@@ -19,15 +19,23 @@ function takeUserSearch() {
     })
     .then(function(json){
       for (var i = 0; i < json.length; i++) {
-        var seriesName = json[i].show.name;
-        var seriesImg = json[i].show.image;
+        var seriesName = json[i].person.name;
+        var seriesImg = json[i].person.image;
+        var personCountry = json[i].person.country;
         var seriesItem = document.createElement('li');
         var seriesImage = document.createElement('img');
+        var personCountryName = document.createElement('p');
 
-        if (json[i].show.image === null) {
+        if (json[i].person.image === null) {
           seriesImage.src = 'https://via.placeholder.com/210x295/cccccc/666666/?text=TV';
         } else {
           seriesImage.src = seriesImg.medium;
+        }
+        if (json[i].person.country === null) {
+          personCountryName.innerHTML = 'País desconocido';
+        } else {
+          personCountryName.innerHTML = personCountry.name;
+          console.log('pais', personCountry.name);
         }
         seriesList.appendChild(seriesItem);
         seriesList.classList.add('ul__container');
@@ -35,6 +43,7 @@ function takeUserSearch() {
         seriesItem.appendChild(seriesImage);
         seriesItem.classList.add('li__container', 'normal__serie');
         seriesImage.classList.add('image');
+        seriesItem.appendChild(personCountryName);
       }
       favoritesSeries();
     });
